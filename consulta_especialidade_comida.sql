@@ -1,0 +1,25 @@
+--2) Dado uma especialidade de comida  deseja-se saber:
+SELECT * FROM [dbo].[RESTAURANTE]
+SELECT * FROM [dbo].[CIDADE]
+SELECT * FROM [dbo].[ENDERECO]
+
+--2.1- Quais as cidades que possuem restaurantes daquela especialidade;
+SELECT C.NOME FROM [dbo].[ENDERECO] E
+INNER JOIN CIDADE C ON (E.ID_CIDADE = C.CODIGO_CIDADE)
+INNER JOIN [dbo].[RESTAURANTE] R ON E.CODIGO_ENDERECO= R.ID_ENDERECO WHERE R.ESPECIALIDADE = 'PRATO FEITO'
+
+--2.2- Quais os hotéis que possuem restaurantes daquela especialidade;
+SELECT * FROM HOTEL
+
+SELECT H.NOME FROM RESTAURANTE R
+INNER JOIN HOTEL H ON (H.ID_RESTAURANTE=R.CODIGO_RESTAURANTE) WHERE R.ESPECIALIDADE = 'PRATO FEITO'
+
+--2.3- Quais as casas de show que não possuem restaurante daquela especialidade .
+
+SELECT * FROM CASA_SHOW;
+SELECT * FROM RESTAURANTE;
+SELECT CS.NOME FROM RESTAURANTE R
+INNER JOIN CASA_SHOW CS ON (CS.ID_RESTAURANTE= R.CODIGO_RESTAURANTE) WHERE R.ESPECIALIDADE <> 'PRATO FEITO'
+
+
+
